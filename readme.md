@@ -4,7 +4,7 @@ Developers often face significant challenges when working on projects locally, e
 
 ## Introducing Nanocl
 
-[Nanocl][nanocl-doc] is a powerful tool designed to streamline project deployment and alleviate the pains associated with localhost development. By seamlessly integrating with your development workflow, Nanocl simplifies the process of running multiple services locally and eliminates common headaches like CORS issues and port conflicts.
+[Nanocl][nanocl-doc] is a powerful tool designed to streamline project deployment and alleviate the pains associated with localhost development. By seamlessly integrating with your development workflow, Nanocl simplifies the process of running multiple services locally and eliminates common headaches like CORS issues, port conflicts and cookies.
 
 ## The Problem at Hand
 
