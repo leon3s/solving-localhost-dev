@@ -15,9 +15,9 @@ Cargoes:
           - ${{ Namespaces.global.Gateway }}
       Env:
         - TZ=Europe/Paris
-        - AUTH_URL=http://auth.dev.next-hat.internal
-        - API_URL=http://api.dev.next-hat.internal
-        - CURRENT_URL=http://console.dev.next-hat.internal
+        - AUTH_URL=http://auth.dev.internal
+        - API_URL=http://api.dev.internal
+        - CURRENT_URL=http://console.dev.internal
       Cmd:
         - sh
         - -c

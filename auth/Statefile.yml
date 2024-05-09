@@ -15,7 +15,7 @@ Cargoes:
       Env:
         - TZ=Europe/Paris
         - DEFAULT_REDIRECT=https://next-hat.com
-        - API_URL=http://api.dev.next-hat.internal
+        - API_URL=http://api.dev.internal
       WorkingDir: /project
       Cmd:
         - sh

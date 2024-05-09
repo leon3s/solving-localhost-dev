@@ -6,19 +6,19 @@ SubStates:
   - ./api/Statefile.yml
 
 Resources:
-  - Name: dns.dev.next-hat.internal
+  - Name: dns.dev.internal
     Kind: ncdns.io/rule
     Data:
       Network: global.nsp
       Entries:
-        - Name: dev.next-hat.internal
+        - Name: dev.internal
           IpAddress: global.nsp
 
-  - Name: http.dev.next-hat.internal
+  - Name: http.dev.internal
     Kind: ncproxy.io/rule
     Data:
       Rules:
-        - Domain: auth.dev.next-hat.internal
+        - Domain: auth.dev.internal
           Network: global.nsp
           Locations:
             - Path: /
@@ -30,19 +30,15 @@ Resources:
                 Key: auth.global.c
                 Port: 3000
 
-        - Domain: api.dev.next-hat.internal
+        - Domain: api.dev.internal
           Network: global.nsp
           Locations:
             - Path: /
-              Version: 1.1
-              Headers:
-                - Upgrade $http_upgrade
-                - Connection "Upgrade"
               Target:
                 Key: api.global.c
                 Port: 8080
 
-        - Domain: console.dev.next-hat.internal
+        - Domain: console.dev.internal
           Network: global.nsp
           Locations:
             - Path: /
@@ -54,7 +50,7 @@ Resources:
                 Key: console.global.c
                 Port: 3000
 
-  - Name: tcp-26258-store.dev.next-hat.internal
+  - Name: tcp-26258-store.dev.internal
     Kind: ncproxy.io/rule
     Data:
       Rules:

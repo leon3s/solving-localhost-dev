@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>
       .wrap(IdentityService::new(
         CookieIdentityPolicy::new(&[0; 32])
           .name("nhtiam")
-          .domain("next-hat.internal")
+          .domain("dev.internal")
           .path("/")
           .secure(false),
       ))

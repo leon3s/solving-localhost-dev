@@ -1,71 +1,91 @@
-# Solving the localhost development headache
+# Solving the Localhost Development Headache with Nanocl
 
-Hello there, it's been quite a while now that im working on a project that aim to help developers to solve the deployment headache, and i think i've found a solution that can help you to solve the localhost development as well.
+Developers often face significant challenges when working on projects locally, especially when it comes to managing multiple services, dealing with CORS and cookies, and ensuring that the development environment mirrors production. However, there's a promising solution on the horizon: [Nanocl][nanocl-doc].
 
-Let's take as example a simple api, a dashboard and a login page, you can run all of them in your localhost, but you will have to run them in different ports, and you will have to deal with CORS, and cookies issues if you don't bind them to a domain, and you will have to deal with the fact that you will have to run all of them in different terminals.
-Where docker compose can solve this problem, it doesn't come with a solution to create domain for your local machine.
-This is where [Nanocl](https://next-hat.com/nanocl) comes in, it's a tool that have been designed to help you to deploy your project in a single command, and it can help you to solve the localhost development headache as well.
+## Introducing Nanocl
 
-This repo is a simple example of how you can use Nanocl to solve the localhost development headache, it's a simple project that have a simple api, a dashboard and a login page, and you can run them all in your localhost in a single command.
+[Nanocl][nanocl-doc] is a powerful tool designed to streamline project deployment and alleviate the pains associated with localhost development. By seamlessly integrating with your development workflow, Nanocl simplifies the process of running multiple services locally and eliminates common headaches like CORS issues and port conflicts.
 
-## How to run the project
+## The Problem at Hand
 
-First you will have to install Nanocl
+Consider a scenario where you're working on a project consisting of various components—an API, a dashboard, and a login page. Traditionally, you would need to run each of these components on different ports, leading to cumbersome setups and potential conflicts. Additionally, issues like CORS and cookies become apparent, especially when these services aren't bound to a specific domain. Managing these challenges manually can be time-consuming and error-prone, detracting from your productivity and focus on actual development tasks.
 
-Refer to the [Nanocl documentation](https://docs.next-hat.com/manuals/nanocl/install/overview) to set it up on your machine.
+## How Nanocl Comes to the Rescue
 
-Then you will have to clone this repo
+[Nanocl][nanocl-doc] provides a comprehensive solution to the localhost development headache. By leveraging its powerful features, developers can streamline their workflow and focus on building great software without getting bogged down by infrastructure complexities.
 
-```bash
-git clone https://github.com/leon3s/solving-localhost-dev
-```
+### Seamless Integration
 
-Then you will have to run the project
+[Nanocl][nanocl-doc] seamlessly integrates with your existing development environment, allowing you to deploy your project with a single command. Gone are the days of juggling multiple terminals and wrestling with configuration files—Nanocl handles it all for you.
 
-```bash
-cd solving-localhost-dev
-nanocl state apply -f
-```
+### Domain Resolution
 
-In this example have created a dns server that will resolve the following domains to your localhost.
-To be able to use this dns server you will have to update your `/etc/resolve.conf` to add the ip address of the dns server.
+One of Nanocl's standout features is its ability to create domains for your local machine, bringing your development environment closer to production. With Nanocl, you can access your services using intuitive domain names like api.dev.internal, console.dev.internal, and auth.dev.internal, making testing and debugging a breeze.
 
-You can retrieve the ip address of the dns server by running the following command
+### Realistic Testing Environment
 
-```bash
-nanocl namespace ls
-```
+By replicating the production setup locally, Nanocl enables developers to test their projects in a more realistic environment. This ensures smoother transitions from development to production and reduces the likelihood of encountering unforeseen issues down the line.
 
-You will get an output like this
+## Getting Started with Nanocl
 
-```bash
-NAME      CARGOES    INSTANCES    GATEWAY     CREATED AT
-system    7          7            10.1.0.1    2024-05-09 15:52:27
-global    4          4            10.2.0.1    2024-05-09 15:52:27
-```
+Ready to kiss localhost headaches goodbye? Here's how to get started with Nanocl:
 
-The line that you are interested in is the one that have the name `global`, you will have to add the ip address of the gateway to your `/etc/resolve.conf` file.
+1.  **Installation**: Refer to the [Nanocl documentation][nanocl-doc-install] for detailed instructions on installing Nanocl on your machine.
 
-```bash
-nameserver 10.2.0.1
-```
+2.  **Clone the Example Repository**: Once Nanocl is installed, clone the example repository provided to see Nanocl in action.
 
-Once you have updated your `/etc/resolve.conf` file you can now access the following domains
+    ```bash
+    git clone https://github.com/leon3s/solving-localhost-dev
+    ```
 
-- api.dev.internal
-- console.dev.internal
-- auth.dev.internal
+3.  **Run the Project**: Navigate to the cloned repository and run the project using Nanocl.
 
-The project is running in dev mode so any change that you make to the code will be reflected in the running instance.
+    ```bash
+    cd solving-localhost-dev
+    nanocl state apply -fs Statefile.yml
+    ```
+
+4.  **Update `/etc/resolve.conf`**: Retrieve the IP address of the DNS server by running the following command:
+
+    ```bash
+    nanocl namespace ls
+    ```
+
+    The output will display the IP address of the DNS server, which you'll need to add to your `/etc/resolve.conf` file.
+
+    ```bash
+    NAME      CARGOES    INSTANCES    GATEWAY     CREATED AT
+    system    7          7            10.1.0.1    2024-05-09 15:52:27
+    global    4          4            10.2.0.1    2024-05-09 15:52:27
+    ```
+
+    Update your `/etc/resolve.conf` file with the IP address of the gateway:
+
+    ```bash
+    nameserver <global-namespace-gateway-ip>
+    ```
+
+5.  **Access Your Domains**: Once the setup is complete, you can access your services using the designated domains (api.dev.internal, console.dev.internal, auth.dev.internal). Enjoy a headache-free development experience!
 
 ## How it works
 
-Nanocl comes with a dns server and a proxy that will resolve the domain to the ip address of the gateway, and it will forward the request to the right instance.
+Nanocl will parse the Statefile.yml to know the current state of the services. It will then create the necessary namespaces, cargoes, and instances to run the services. The services will be available at the domains specified in the Statefile.yml.
 
-This way your development setup is closer to the production setup, and you can test your project in a more realistic environment.
+With a combinaison of a DNS server and a reverse proxy, Nanocl will resolve the domains to the correct services.
+
+## Key Takeaways
+
+- **Simplified Development Workflow**: Nanocl streamlines the process of running multiple services locally, enabling developers to focus on building great software.
+
+- **Domain Resolution**: Nanocl creates intuitive domains for your services, making it easier to test and debug your projects.
+
+- **Realistic Testing Environment**: By mirroring the production setup locally, Nanocl helps developers identify and resolve issues early on, leading to smoother deployments.
+
+- **Seamless Integration**: Nanocl seamlessly integrates with your existing development environment, eliminating the need for manual configurations and complex setups.
 
 ## Conclusion
 
-I hope that this example will help you to solve the localhost development headache, and that you will find Nanocl useful for your project. If you have any question or suggestion feel free to open an issue or a discussion in the repo.
+With Nanocl, localhost development doesn't have to be a headache anymore. By providing a seamless solution to common challenges, Nanocl empowers developers to focus on what they do best—building innovative software. Say goodbye to CORS woes and port conflicts, and hello to a smoother, more efficient development workflow. Give Nanocl a try today and unlock a world of possibilities for your projects. Happy coding!
 
-Happy coding!
+[nanocl-doc]: https://next-hat.com/nanocl
+[nanocl-doc-install]: https://docs.next-hat.com/manuals/nanocl/install/overview

@@ -21,7 +21,7 @@ Cargoes:
       Tty: true
       Env:
         - TZ=Europe/Paris
-        - DATABASE_URL=postgres://root:root@store.dev.next-hat.internal:26258/defaultdb?sslmode=disable
+        - DATABASE_URL=postgres://root:root@store.dev.internal:26258/defaultdb?sslmode=disable
       HostConfig:
         Dns:
           - ${{ Namespaces.global.Gateway }}
