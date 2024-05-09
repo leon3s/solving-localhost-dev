@@ -77,7 +77,7 @@ With a combinaison of a DNS server and a reverse proxy, Nanocl will resolve the 
 
 - **Simplified Development Workflow**: Nanocl streamlines the process of running multiple services locally, enabling developers to focus on building great software.
 
-- **Domain Resolution**: Nanocl creates intuitive domains for your services, making it easier to test and debug your projects.
+- **Domain Resolution**: Nanocl help you to setup intuitive domains for your services, making it easier to test and debug your projects.
 
 - **Realistic Testing Environment**: By mirroring the production setup locally, Nanocl helps developers identify and resolve issues early on, leading to smoother deployments.
 
@@ -85,7 +85,7 @@ With a combinaison of a DNS server and a reverse proxy, Nanocl will resolve the 
 
 ## Conclusion
 
-With Nanocl, localhost development doesn't have to be a headache anymore. By providing a seamless solution to common challenges, Nanocl empowers developers to focus on what they do best—building innovative software. Say goodbye to CORS woes and port conflicts, and hello to a smoother, more efficient development workflow. Give Nanocl a try today and unlock a world of possibilities for your projects. Happy coding!
+With Nanocl, localhost development doesn't have to be a headache anymore. By providing a seamless solution to common challenges, Nanocl empowers developers to focus on what they do best—building innovative software. Say goodbye to CORS woes, port conflicts and cookies problems, and hello to a smoother, more efficient development workflow. Give Nanocl a try today and unlock a world of possibilities for your projects. Happy coding!
 
 [nanocl-doc]: https://next-hat.com/nanocl
 [nanocl-doc-install]: https://docs.next-hat.com/manuals/nanocl/install/overview
