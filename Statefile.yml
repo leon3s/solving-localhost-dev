@@ -1,0 +1,66 @@
+ApiVersion: v0.14
+
+SubStates:
+  - ./console/Statefile.yml
+  - ./auth/Statefile.yml
+  - ./api/Statefile.yml
+
+Resources:
+  - Name: dns.dev.next-hat.internal
+    Kind: ncdns.io/rule
+    Data:
+      Network: global.nsp
+      Entries:
+        - Name: dev.next-hat.internal
+          IpAddress: global.nsp
+
+  - Name: http.dev.next-hat.internal
+    Kind: ncproxy.io/rule
+    Data:
+      Rules:
+        - Domain: auth.dev.next-hat.internal
+          Network: global.nsp
+          Locations:
+            - Path: /
+              Version: 1.1
+              Headers:
+                - Upgrade $http_upgrade
+                - Connection "Upgrade"
+              Target:
+                Key: auth.global.c
+                Port: 3000
+
+        - Domain: api.dev.next-hat.internal
+          Network: global.nsp
+          Locations:
+            - Path: /
+              Version: 1.1
+              Headers:
+                - Upgrade $http_upgrade
+                - Connection "Upgrade"
+              Target:
+                Key: api.global.c
+                Port: 8080
+
+        - Domain: console.dev.next-hat.internal
+          Network: global.nsp
+          Locations:
+            - Path: /
+              Version: 1.1
+              Headers:
+                - Upgrade $http_upgrade
+                - Connection "Upgrade"
+              Target:
+                Key: console.global.c
+                Port: 3000
+
+  - Name: tcp-26258-store.dev.next-hat.internal
+    Kind: ncproxy.io/rule
+    Data:
+      Rules:
+        - Network: global.nsp
+          Protocol: Tcp
+          Port: 26258
+          Target:
+            Key: store.global.c
+            Port: 26257

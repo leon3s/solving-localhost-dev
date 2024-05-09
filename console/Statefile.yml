@@ -1,0 +1,26 @@
+ApiVersion: v0.14
+
+Namespace: global
+
+Cargoes:
+  - Name: console
+    Container:
+      Image: node:18.16.0-slim
+      Tty: true
+      WorkingDir: /project
+      HostConfig:
+        Binds:
+          - ./console/:/project
+        Dns:
+          - ${{ Namespaces.global.Gateway }}
+      Env:
+        - TZ=Europe/Paris
+        - AUTH_URL=http://auth.dev.next-hat.internal
+        - API_URL=http://api.dev.next-hat.internal
+        - CURRENT_URL=http://console.dev.next-hat.internal
+      Cmd:
+        - sh
+        - -c
+        - |
+          npm install
+          npm run dev
