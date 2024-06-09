@@ -1,10 +1,10 @@
 [package]
-name = "iam-authentication"
+name = "api"
 version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "iam-authentication"
+name = "api"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -18,7 +18,7 @@ diesel = { version = "2.0.4", features = [
 diesel_migrations = { version = "2.0.0", features = ["postgres"] }
 env_logger = "0.10.0"
 log = "0.4.17"
-ntex = { version = "0.6.7", features = ["tokio"] }
+ntex = { version = "2", features = ["tokio"] }
 r2d2 = "0.8.10"
 serde = { version = "1.0.162", features = ["derive"] }
 serde_json = "1.0.96"
@@ -33,10 +33,10 @@ utoipa = { version = "3.3.0", features = ["uuid", "chrono"] }
 argon2 = { version = "0.5.0", features = ["std"] }
 rand = "0.8.5"
 base64 = "0.21.0"
-ntex-identity = "0.2.0"
-ntex-session = "0.2.0"
+ntex-identity = "2"
+ntex-session = "2"
 cookie = "0.17.0"
-ntex-cors = { version = "0.3.0" }
+ntex-cors = { version = "2" }
 
 # [patch.crates-io]
 # ntex-cors = { git = "https://github.com/ntex-rs/ntex-extras.git" }

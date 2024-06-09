@@ -18,11 +18,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table } from "@/components/table"
 
-export interface DialogUserInviteProps {
+interface DialogUserInviteProps {
   onInviteUser: (user: any) => void
 }
 
-export function DialogUserInvite(props: DialogUserInviteProps) {
+function DialogUserInvite(props: DialogUserInviteProps) {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [error, setError] = React.useState(null)
