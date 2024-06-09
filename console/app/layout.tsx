@@ -52,7 +52,7 @@ export default async function RootLayout({
 
   if (cookie === undefined) {
     return redirect(
-      `${process.env.AUTH_URL}?redirect=${process.env.CURRENT_URL}`
+      `${process.env.AUTH_URL}?redirect=${process.env.APP_URL}`
     )
   }
 

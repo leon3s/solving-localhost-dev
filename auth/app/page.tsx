@@ -7,6 +7,7 @@ import axios from "@/lib/api"
 
 import PageTitle from "@/components/PageTitle"
 import { useRouter, useParams, useSearchParams } from "next/navigation"
+
 export default function Auth() {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -26,7 +27,7 @@ export default function Auth() {
         key: email,
         password,
       })
-      .then((res) => {
+      .then((_) => {
         router.replace(redirectUrl)
       })
       .catch((err) => {

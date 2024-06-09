@@ -4,21 +4,22 @@ SubStates:
   - ./console/Statefile.yml
   - ./auth/Statefile.yml
   - ./api/Statefile.yml
+  - ./Secrets.Statefile.yml
 
 Resources:
-  - Name: dns.dev.internal
+  - Name: dns.dev.wtf
     Kind: ncdns.io/rule
     Data:
       Network: global.nsp
       Entries:
-        - Name: dev.internal
+        - Name: dev.wtf
           IpAddress: global.nsp
 
-  - Name: http.dev.internal
+  - Name: http.dev.wtf
     Kind: ncproxy.io/rule
     Data:
       Rules:
-        - Domain: auth.dev.internal
+        - Domain: auth.dev.wtf
           Network: global.nsp
           Locations:
             - Path: /
@@ -30,7 +31,7 @@ Resources:
                 Key: auth.global.c
                 Port: 3000
 
-        - Domain: api.dev.internal
+        - Domain: api.dev.wtf
           Network: global.nsp
           Locations:
             - Path: /
@@ -38,7 +39,7 @@ Resources:
                 Key: api.global.c
                 Port: 8080
 
-        - Domain: console.dev.internal
+        - Domain: console.dev.wtf
           Network: global.nsp
           Locations:
             - Path: /
@@ -50,7 +51,7 @@ Resources:
                 Key: console.global.c
                 Port: 3000
 
-  - Name: tcp-26258-store.dev.internal
+  - Name: tcp-26258-store.dev.wtf
     Kind: ncproxy.io/rule
     Data:
       Rules:

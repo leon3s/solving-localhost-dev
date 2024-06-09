@@ -34,12 +34,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>
   let swagger_conf =
     swagger::SwaggerConfig::new(api_doc, "/explorer/swagger.json");
 
+  let base_domain = std::env::var("BASE_DOMAIN").unwrap();
+
   web::HttpServer::new(move || {
     web::App::new()
       .wrap(IdentityService::new(
         CookieIdentityPolicy::new(&[0; 32])
           .name("nhtiam")
-          .domain("dev.internal")
+          .domain(&base_domain)
           .path("/")
           .secure(false),
       ))
@@ -61,6 +63,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>
   .bind(("0.0.0.0", 8080))?
   .run()
   .await?;
-
   Ok(())
 }

@@ -4,8 +4,10 @@ Namespace: global
 
 Cargoes:
   - Name: console
+    Secrets:
+      - env.dev.wtf
     Container:
-      Image: node:18.16.0-slim
+      Image: node:20.14.0-slim
       Tty: true
       WorkingDir: /project
       HostConfig:
@@ -13,11 +15,6 @@ Cargoes:
           - ./console/:/project
         Dns:
           - ${{ Namespaces.global.Gateway }}
-      Env:
-        - TZ=Europe/Paris
-        - AUTH_URL=http://auth.dev.internal
-        - API_URL=http://api.dev.internal
-        - CURRENT_URL=http://console.dev.internal
       Cmd:
         - sh
         - -c

@@ -4,7 +4,7 @@ const nextConfig = {
   env: {
     API_URL: process.env.API_URL,
     AUTH_URL: process.env.AUTH_URL,
-    CURRENT_URL: process.env.CURRENT_URL,
+    APP_URL: process.env.APP_URL,
   },
 }
 
